@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { File1 } from '../File1'
-
+const config2=require('../config2.json')
 export const Login = () => {
     const [data2,setData2]=useState({
 
-'identifier':'jaya@gmail.com'
-,'password':'Jaya@123'
+'identifier':''
+,'password':''
         
     })
     const [user,setUser]=useState({
@@ -38,13 +38,17 @@ const log1=async (e)=>{
 
 e.preventDefault()
 try {
-    const {data}=await axios.post('http://localhost:1337/api/auth/local',{
+  //  const {data}=await axios.post('https://ancient-oasis-43602.herokuapp.com/api/auth/local',{
+      const {data}=await axios.post(`${config2.prod_api_url}/api/auth/local`,{
 identifier:data2.identifier,
 password:data2.password
 
 
 
-})
+},{    headers:{
+  'Content-Type': 'application/json'
+}})
+
 console.log(data);
 setUser(
     {

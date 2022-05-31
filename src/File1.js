@@ -45,7 +45,7 @@ let  uploadImage = async(e) => {
     let data = new FormData();
   data.append("files", data1);
 let upload_response = await axios({ method: "POST",
-      url: 'http://localhost:1337/api/upload', headers:{
+      url: 'https://ancient-oasis-43602.herokuapp.com/api/upload', headers:{
         'content-type':'application.json',
         "Authorization":`Bearer ${jwt.token}`
       }
